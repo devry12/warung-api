@@ -21,8 +21,8 @@ router.get('/:product_id/:user_id', async (req, res) => {
 
 //add data unit
 router.post('/', async (req, res) => {
-    var unit = await db('product_like').insert({ product_id: req.body.product_id, user_id: req.body.user_id })
-    if (unit) {
+    var like = await db('product_like').insert({ product_id: req.body.product_id, user_id: req.body.user_id })
+    if (like) {
         res.status(200).json({
             status: true,
             message: 'success',
@@ -37,8 +37,8 @@ router.post('/', async (req, res) => {
 
 //delete data unit
 router.delete('/', async (req, res) => {
-    var unit = await db('product_like').where({ unit_id: req.body.unit_id }).del();
-    if (unit) {
+    var like = await db('product_like').where({ product_id: req.body.product_id, user_id: req.body.user_id }).del();
+    if (like) {
         res.status(200).json({
             status: true,
             message: 'success',
