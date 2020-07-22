@@ -12,7 +12,7 @@ router.get('/:category_id', async (req, res, next) => {
     })
 })
 
-router.get('/:product_id', async (req, res, next) => {
+router.get('/detail/:product_id', async (req, res, next) => {
     var product = await db('products').where('product_id', req.params.product_id)
     res.json({
         status: true,
