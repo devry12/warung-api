@@ -30,7 +30,7 @@ router.post('/', async (req, res, next) => {
         quantity: req.body.quantity,
         price: req.body.price,
         category_id: req.body.category_id,
-        image: req.body.images
+        image: req.body.image
     })
     res.json({
         status: true,
