@@ -6,7 +6,7 @@ const router = express.Router();
 const db = require('../config/db.js')
 
 //get data category
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
     var category = await db('category');
     res.status(200).json({
         status: true,
@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
     })
 });
 //get data percategory
-router.get('/:category_id', async (req, res, next) => {
+router.get('/:category_id', async (req, res) => {
     var category = await db('category').where('category_id', req.params.category_id);
     res.status(200).json({
         status: true,
@@ -24,7 +24,7 @@ router.get('/:category_id', async (req, res, next) => {
     })
 });
 //add data category
-router.post('/', async (req, res, next) => {
+router.post('/', async (req, res) => {
     var category = await db('category').insert({ name: req.body.name, icon: req.body.icon })
     if (category) {
         res.status(200).json({
@@ -39,7 +39,7 @@ router.post('/', async (req, res, next) => {
     }
 })
 //update data category
-router.put('/', async (req, res, next) => {
+router.put('/', async (req, res) => {
     var category = await db('category').where('category_id', req.body.category_id).update({ name: req.body.name, icon: req.body.icon })
     if (category) {
         res.status(200).json({
@@ -55,7 +55,7 @@ router.put('/', async (req, res, next) => {
 })
 
 //delete data category
-router.delete('/', async (req, res, next) => {
+router.delete('/', async (req, res) => {
     var checkProduct = await db('products').where('unit_id', req.body.unit_id)
     if (checkProduct.length < 1) {
 
